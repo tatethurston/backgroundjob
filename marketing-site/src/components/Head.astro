@@ -1,0 +1,42 @@
+---
+export interface Props {
+	title: string;
+	description: string;
+  keywords: string;
+}
+
+const { title, description, keywords } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BackgroundJob | {title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content="BackgroundJob.com" />
+{ import.meta.env.MODE === 'production' &&
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'" /> }
+
+<meta name="color-scheme" content="light dark" />
+<!-- Keep in sync with theme-bg from global.css -->
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000014" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon-192x192.png">
+
+<!-- SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content={keywords} />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+

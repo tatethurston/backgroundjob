@@ -1,0 +1,14 @@
+{
+  "name": "@example/basics",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "start": "astro build && astro preview"
+  },
+  "devDependencies": {
+    "astrojs-service-worker": "^0.0.8",
+    "astro": "^1.0.0-rc.3"
+  }
+}
